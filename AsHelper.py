@@ -53,9 +53,9 @@ class AsInstall(cmdln.Cmdln):
       """
       RET={}
       if opts.type == "yast2":
-          ### yast2 type is 'easy': the files are called appdata.xml.gz and appddata-icons.tar.gz
+          ### yast2 type is 'easy': the files are called appstream.xml.gz and appstream-icons.tar.gz
           ROOT=os.path.join(opts.path, YAST2)
-          RET = {'appdata': os.path.join(ROOT,'appdata.xml.gz'), 'appdata-icons': os.path.join(ROOT,'appdata-icons.tar.gz')}
+          RET = {'appdata': os.path.join(ROOT,'appstream.xml.gz'), 'appdata-icons': os.path.join(ROOT,'appstream-icons.tar.gz')}
           pass
       elif opts.type == "rpm-md":
           RET=self.parse_rpmmd(opts.path)
