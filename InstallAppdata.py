@@ -23,6 +23,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import os
+import subprocess
 import sys
 import glob
 
@@ -30,7 +31,7 @@ import glob
 
 for oldappdata in glob.glob('/var/cache/app-info/xmls/*.xml.gz'):
   appdata=os.path.basename(oldappdata).strip('.xml.gz')
-  os.system("/usr/bin/appstream-util uninstall \"%s\"" % appdata)
+  subprocess.run(["/usr/bin/appstream-util", "uninstall", appdata])
 
 # Install new appdata files - libzypp calls us with 6 parameters per repo:
 # -R REPO_ALIAS -t REPO_TYPE -p REPO_METADATA_PATH [-R NEXT_REPO....]
@@ -39,7 +40,7 @@ args=sys.argv[1:]
 
 try:
   while args[0] == "-R":
-    os.system("/usr/lib/AsHelper install %s %s %s %s %s %s" % (args[0], args[1], args[2], args[3], args[4], args[5]))
+    subprocess.run(["/usr/lib/AsHelper", "install", args[0], args[1], args[2], args[3], args[4], args[5]])
     args=args[6:]
 except IndexError:
     pass
