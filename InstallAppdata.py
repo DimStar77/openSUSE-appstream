@@ -23,13 +23,15 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import os
+import shutil
 import subprocess
 import sys
 import glob
 
-# Cleanup existing appdata found on the system
+had_swcatalog=os.path.isdir('/var/cache/swcatalog/xml')
 
-for oldappdata in glob.glob('/var/cache/app-info/xmls/*.xml.gz'):
+# Cleanup existing appdata found on the system
+for oldappdata in glob.glob('/var/cache/swcatalog/xml/*.xml.gz'):
   appdata=os.path.basename(oldappdata).strip('.xml.gz')
   subprocess.run(["/usr/bin/appstream-util", "uninstall", appdata])
 
@@ -46,5 +48,9 @@ except IndexError:
     pass
 
 # Fixup icon that might have uncompressed with odd permissions
-for icondir in glob.glob('/var/cache/app-info/icons/*'):
+for icondir in glob.glob('/var/cache/swcatalog/icons/*'):
   os.chmod(icondir, 0o755)
+
+# If this was the initial migration from app-info to swcatalog, remove app-info.
+if not had_swcatalog and os.path.isdir('/var/cache/app-info'):
+  shutil.rmtree('/var/cache/app-info')

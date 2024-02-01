@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "Forcing resync of AppStream metadata from repo cache into /var/cache/app-info"
+echo "Forcing resync of AppStream metadata from repo cache into /var/cache/swcatalog"
 ZYPP_PLUGIN_APPDATA_FORCE_COLLECT=1 zypper -n lr >/dev/null 2>&1
