@@ -1,7 +1,7 @@
 [Unit]
 Description=Synchronize AppStream metadata from repositories into AS-cache
 After=local-fs.target
-ConditionDirectoryNotEmpty=!/var/cache/app-info/xmls
+ConditionDirectoryNotEmpty=!/var/cache/swcatalog/xml
 
 [Service]
 # added automatically, for details please see
