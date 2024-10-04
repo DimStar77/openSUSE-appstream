@@ -17,7 +17,7 @@
 
 
 Name:           libzypp-plugin-appdata
-Version:        1.0.1+git.20220908
+Version:        1.0.1+git.20240209
 Release:        0
 Summary:        libzypp extension to handle AppStream metadata
 License:        CC0-1.0 AND MIT
