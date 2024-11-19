@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:52:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop suse-missing-rclink rpmlint filter: rcFOO symlinks are
+  obsolete and rpmlint no longer complains on them.
+
+-------------------------------------------------------------------
 Thu Sep  8 13:36:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to a git-remote asset based package.
